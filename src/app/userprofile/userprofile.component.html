@@ -1,0 +1,25 @@
+<div class="container">
+    <h3 class="fw-bold text-center">User Profile</h3>
+   <div class="row my-3">
+       <div class="col-sm-4 mt-3">
+           <img [src]="userObj?.image" width="60px" height="80px" class="d-block mx-auto img-fluid">
+       </div>
+       <div class="col-sm-6">
+           <form class="form">
+               <div class="form-group mb-2">
+                   <label for="username" class="form-label">Username</label>
+                   <input type="text" class="form-control" id="username" name="username" [value]="userObj?.username" disabled>
+               </div>
+               <div class="form-group mb-2">
+                   <label for="email" class="form-label">Email</label>
+                   <input type="email" class="form-control" id="email" name="email" [value]="userObj?.email" disabled>
+               </div>
+               <div class="form-group mb-2">
+                   <label for="gender" class="form-label">Gender</label>
+                   <input type="text" class="form-control" id="gender" name="gender" [value]="userObj?.gender" disabled>
+              </div>
+           </form>
+       </div>
+       <div class="col-sm-2"></div>
+   </div>
+</div>

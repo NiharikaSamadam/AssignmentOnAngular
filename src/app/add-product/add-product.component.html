@@ -1,0 +1,28 @@
+<div class="container">
+    <form class="form" #ref="ngForm" (ngSubmit)="addProduct(ref)">
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="productId" placeholder="123" name="productId" ngModel>
+            <label for="productId">ProductId</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="productname" placeholder="name" name="pname" ngModel>
+            <label for="productname">Product Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="price" placeholder="123" name="price" ngModel>
+            <label for="price">Product Price</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="brand" placeholder="brand" name="brand" ngModel>
+            <label for="brand">Brand</label>
+          </div>
+          <div class="form-group mb-3">
+            <label for="uploadphoto" class="form-label">
+              <input type="file" class="form-control" (change)="incomingfile($event)" name="photo" accept="image/*" placeholder="Upload file">
+            </label>
+          </div>         
+          <div class="text-center mb-3">
+            <button class="btn btn-primary  ms-auto" value="submit">Add Product</button>
+          </div>
+    </form>
+</div>

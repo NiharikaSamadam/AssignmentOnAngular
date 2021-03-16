@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h3 class="text-center fw-bold mb-3">Sign In</h3>
+            <form #ref = "ngForm" class="form" (ngSubmit)="submitForm(ref)">
+                <div class="mb-3">
+                  <div class="form-check-inline form-switch">
+                    <input class="form-check-input me-2" type="radio" id="user" name="usertype" value="user" ngModel>
+                    <label class="form-check-label" for="user">User</label>
+                  </div>
+                  <div class="form-check-inline form-switch">
+                    <input class="form-check-input me-2" type="radio" id="admin" name="usertype" value="admin" ngModel>
+                    <label class="form-check-label" for="admin">Admin</label>
+                  </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control col-8" id="username" name="username" placeholder="username" ngModel>
+                    <label for="username">Username</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="password" ngModel>
+                    <label for="password">Password</label>
+                  </div>
+                  <div class="text-center">
+                      <button class="btn btn-primary" value="submit">Login</button>
+                  </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+

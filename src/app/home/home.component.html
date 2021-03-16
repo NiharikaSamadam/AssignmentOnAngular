@@ -1,0 +1,47 @@
+<div class="container-fluid">
+   <div class="container">
+     <div *ngIf="username != null">
+       <button class="btn btn-danger text-end d-block ms-auto m-3" (click)="logout()">Logout</button>
+     </div>
+   </div>
+    <div id="carouselExampleIndicators" class="carousel slide m-2" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Wireless/Samsung/SamsungBAU/Note10lite/1stMar/D19895669_IN_WLME_SamsungGalaxy_S21_New_Launch__Mobile_hero_1242x450._CB659435486_SY250_.jpg" class="d-block w-100 img-fluid" alt="image01">
+          </div>
+          <div class="carousel-item">
+            <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Wireless/Xiaomi/Redmi_EVOSeries/Note10/GW/Saletoday/D21342465_WLD_Mi_Redmi_Note10_mobhero_1242x450_2._CB658313738_SY500_.jpg" class="d-block w-100 img-fluid"  alt="image02">
+          </div>
+          <div class="carousel-item">
+            <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Wireless/Xiaomi/Family/GW/March/offer/D21563914_WLD_Mi_Family_BAU_MobileHero_1242x450._CB658359965_SY250_.jpg" class="d-block w-100 img-fluid" alt="image03">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+</div>
+<div class="container my-5">
+    <div class="row  row-cols-md-3 row-cols-sm-2 row-cols-2 g-3 g-md-5">
+        <div class="col" *ngFor = "let product of productsArray">
+            <div class="card">
+                <div class="card-body text-center">
+                    <img [src]="product?.image" alt = "image" height="220px"  class="card-img-top">
+                    <div class="card-title  fw-bold my-2">{{product?.brand}}</div>
+                    <button class="btn btn-info m-2" (click)="specifications(product?.productId)">Specifications</button>
+                    <button class="btn btn-warning m-2" (click)="addtocart(product)">Add to Cart</button>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h3 class="text-center fw-bold mb-3">Create Account</h3>
+            <form #ref = "ngForm" class="form" (ngSubmit)="submitForm(ref)">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control col-8" id="username" name="username" placeholder="username" ngModel>
+                    <label for="username">Username</label>
+                  </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" ngModel>
+                    <label for="email">Email address</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="password" ngModel>
+                    <label for="password">Password</label>
+                  </div>
+                  <div class="form-group mb-3">
+                      <label class="form-label">Gender</label><br>
+                    <div class="form-check-inline form-switch">
+                        <input class="form-check-input me-2" type="radio" id="male" name="gender" value="male" ngModel>
+                        <label class="form-check-label" for="male">Male</label>
+                      </div>
+                      <div class="form-check-inline form-switch">
+                        <input class="form-check-input me-2" type="radio" id="female" name="gender" value="female" ngModel>
+                        <label class="form-check-label" for="female">Female</label>
+                      </div>
+                  </div>
+                  <div class="form-group mb-3">
+                      <label for="uploadphoto" class="form-label">
+                        <input type="file" class="form-control" (change)="incomingfile($event)" name="photo" accept="image/*" placeholder="Upload file">
+                      </label>
+                  </div>
+                  <div class="text-center">
+                      <button class="btn btn-primary" value="submit">Register</button>
+                  </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
