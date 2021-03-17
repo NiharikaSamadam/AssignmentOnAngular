@@ -1,0 +1,14 @@
+<div class="container my-5">
+    <div class="row  row-cols-md-3 row-cols-sm-2 row-cols-2 g-3 g-md-5">
+        <div class="col" *ngFor = "let product of productsArray">
+            <div class="card">
+                <div class="card-body text-center">
+                    <img [src]="product?.image" alt = "image" height="220px"  class="card-img-top">
+                    <div class="card-title  fw-bold my-2">{{product?.brand}}</div>
+                    <button class="btn btn-info m-2" (click)="specifications(product?.productId)">Specifications</button>
+                    <button class="btn btn-warning m-2" (click)="addtocart(product)">Add to Cart</button>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

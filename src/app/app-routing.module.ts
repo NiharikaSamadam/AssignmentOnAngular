@@ -21,6 +21,7 @@ const routes: Routes = [
   {path:"usercart",component:UsercartComponent},
   {path:"admindashboard",component:AdmindashboardComponent,children:[
     {path:"addproduct",component:AddProductComponent},
+    {path:"",redirectTo:"/admindashboard/addproduct",pathMatch:"full"},
   ]},
   {path:"specification/:id",component:SpecificationComponent},
   {path:"",redirectTo:"/home",pathMatch:"full"},

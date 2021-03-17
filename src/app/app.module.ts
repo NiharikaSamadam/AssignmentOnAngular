@@ -16,6 +16,9 @@ import { AddProductComponent } from './add-product/add-product.component';
 import {  HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthorisationService } from './authorisation.service';
 import { SpecificationComponent } from './specification/specification.component';
+import { CarouselComponent } from './carousel/carousel.component';
+import { ProductsComponent } from './products/products.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +31,10 @@ import { SpecificationComponent } from './specification/specification.component'
     UserprofileComponent,
     UsercartComponent,
     AddProductComponent,
-    SpecificationComponent
+    SpecificationComponent,
+    CarouselComponent,
+    ProductsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

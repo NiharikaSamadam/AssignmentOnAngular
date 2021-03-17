@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
 
         }
         else{
-          alert(res['message'])
+          alert("user already exists... Please choose another one")
         }
       },
       err =>{
