@@ -54,8 +54,8 @@ cartApiObj.delete("/deleteproduct/:productId",validateToken,errorHandler(async(r
 
     //delete product
     let result = await Cart.deleteOne({productId : req.params.productId})
-
-    res.send({message:"deleted successfully"})
+    let updatedArray = await Cart.findOne({productId : req.params.productId})
+    res.send({message:"deleted successfully",updatedArray:updatedArray})
 }))
 
 //export

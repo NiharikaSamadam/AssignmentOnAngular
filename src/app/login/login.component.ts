@@ -11,8 +11,17 @@ export class LoginComponent implements OnInit {
 
   constructor(private us:UserserviceService,private router:Router) { }
 
+  username:string;
   ngOnInit(): void {
-    localStorage.clear()
+    if(localStorage.getItem("username") == null){
+      this.router.navigateByUrl("/login")
+      localStorage.clear()
+    }
+    else{
+        
+      this.router.navigateByUrl(`/userdashboard/${localStorage.getItem("username")}`)
+    }
+    
   }
 
   submitForm(ref){
@@ -24,11 +33,13 @@ export class LoginComponent implements OnInit {
       this.us.loginuser(credObj).subscribe(
         res=>{
           if(res['message'] == "Login Success"){
+            this.username = res['username']
             localStorage.setItem("token",res['token'])
             localStorage.setItem("username",res['username'])
+            sessionStorage.setItem("username",res['username'])
             
             //navigate to user dashboard
-            this.router.navigateByUrl("/userdashboard")
+            this.router.navigateByUrl(`/userdashboard/${this.username}`)
           }
           else{
             alert(res['reason'])
@@ -51,7 +62,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem("username",res['username'])
             
             //navigate to user dashboard
-            this.router.navigateByUrl("/admindashboard")
+            this.router.navigateByUrl("/admindashboard/admin")
           }
           else{
             alert(res['reason'])

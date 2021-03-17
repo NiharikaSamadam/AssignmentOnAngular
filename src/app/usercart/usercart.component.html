@@ -1,5 +1,5 @@
 <div class="container my-5">
-    <button class="btn btn-danger text-end d-block ms-auto m-3" (click)="logout()">Logout</button>
+  <div *ngIf = "productsArray?.length; else elseblock">
     <div class="row  row-cols-md-3 row-cols-sm-2 row-cols-2 g-3 g-md-5 mx-auto">
         <div class="col" *ngFor = "let product of productsArray">
             <div class="card">
@@ -13,4 +13,8 @@
               </div>
         </div>
     </div>
+  </div>
 </div>
+<ng-template #elseblock>
+    <h4 class="mx-auto my-3">No products found in cart</h4>
+</ng-template>

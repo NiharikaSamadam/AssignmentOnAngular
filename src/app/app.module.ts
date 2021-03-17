@@ -19,6 +19,7 @@ import { SpecificationComponent } from './specification/specification.component'
 import { CarouselComponent } from './carousel/carousel.component';
 import { ProductsComponent } from './products/products.component';
 import { FooterComponent } from './footer/footer.component';
+
 @NgModule({
   declarations: [
     AppComponent,

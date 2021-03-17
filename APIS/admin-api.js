@@ -72,7 +72,7 @@ adminApiObj.post("/adminlogin",errorHandler(async(req,res)=>{
         else{
 
             //create token and sign it
-            let signedToken = await jwt.sign({username:req.body.username},process.env.SECRET,{expiresIn:100})
+            let signedToken = await jwt.sign({username:req.body.username},process.env.SECRET,{expiresIn:500})
 
             //send response along with token
             res.send({message:"Login Success",token:signedToken,username:req.body.username})

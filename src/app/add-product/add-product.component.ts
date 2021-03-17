@@ -40,10 +40,9 @@ export class AddProductComponent implements OnInit {
           this.router.navigateByUrl("/login")
         }
         else{
+          
         if(res['message'] == 'Product added'){
           alert(res['message'])
-          //navigate to add product
-          this.router.navigateByUrl("/admindashboard")
         }
         else{
           alert(res['message'])

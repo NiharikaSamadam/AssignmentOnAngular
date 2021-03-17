@@ -9,9 +9,11 @@ import { UserserviceService } from '../userservice.service';
 })
 export class UsercartComponent implements OnInit {
 
+  username:string;
   constructor(private us : UserserviceService,private router:Router) { }
  productsArray = [];
   ngOnInit(): void {
+    this.username = localStorage.getItem("username")
     this.us.getProductsfromCart().subscribe(
       res => {
         if(res['message'] == "failed"){
@@ -45,7 +47,7 @@ export class UsercartComponent implements OnInit {
         else{
           alert(res['message'])
           //navigate to home
-          this.router.navigateByUrl("/home")
+          this.router.navigateByUrl(`/userdashboard/${this.username}`)
         }
       },
       err=>{

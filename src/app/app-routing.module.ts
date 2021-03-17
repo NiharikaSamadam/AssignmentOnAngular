@@ -15,13 +15,13 @@ const routes: Routes = [
   {path:"home",component:HomeComponent},
   {path:"register",component:RegisterComponent},
   {path:"login",component:LoginComponent},
-  {path:"userdashboard",component:UserdashboardComponent,children:[
+  {path:"userdashboard/:username",component:UserdashboardComponent,children:[
     {path:"userprofile",component:UserprofileComponent},
+    {path:"usercart",component:UsercartComponent},
   ]},
-  {path:"usercart",component:UsercartComponent},
-  {path:"admindashboard",component:AdmindashboardComponent,children:[
+  {path:"admindashboard/admin",component:AdmindashboardComponent,children:[
     {path:"addproduct",component:AddProductComponent},
-    {path:"",redirectTo:"/admindashboard/addproduct",pathMatch:"full"},
+    {path:"",redirectTo:"/admindashboard/admin/addproduct",pathMatch:"full"},
   ]},
   {path:"specification/:id",component:SpecificationComponent},
   {path:"",redirectTo:"/home",pathMatch:"full"},
