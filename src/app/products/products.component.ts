@@ -34,8 +34,12 @@ export class ProductsComponent implements OnInit {
   }
 
   addtocart(product){
+    
     this.username = localStorage.getItem("username")
+    
     let productObj = {"username":this.username,"productId":product.productId,"pname":product.pname,"price":product.price,"brand":product.brand,"image":product.image}
+    
+    //add product to cart
     this.us.addProducttoCart(productObj).subscribe(
          res=>{
            if(res["message"] == "failed"){

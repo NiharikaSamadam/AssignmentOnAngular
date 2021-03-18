@@ -10,11 +10,14 @@ import { UserserviceService } from '../userservice.service';
 export class UsercartComponent implements OnInit {
 
   username:string;
+  productsArray = [];
+
   constructor(private us : UserserviceService,private router:Router) { }
- productsArray = [];
+ 
   ngOnInit(): void {
     this.username = localStorage.getItem("username")
     
+    //get products ffrom cart
     this.us.getCartItems(this.username).subscribe(
       res => {
             if(res['message'] == "failed"){
@@ -36,6 +39,7 @@ export class UsercartComponent implements OnInit {
     )
   }
 
+  //delete product from cart
   deleteitem(product){
     let id = product.productId
     let cartObj = {"username":this.username,"productId":id}
@@ -48,9 +52,8 @@ export class UsercartComponent implements OnInit {
             this.router.navigateByUrl("/login")
           }
           else{
-            alert(res['message'])
             this.productsArray.splice(product,1)
-           
+            alert(res['message'])
           }
         },
         err=>{

@@ -21,15 +21,19 @@ export class LoginComponent implements OnInit {
       
     }
     else{
-        
-      this.router.navigateByUrl(`/userdashboard/${localStorage.getItem("username")}`)
+      if(localStorage.getItem("usertype") == "user"){
+        this.router.navigateByUrl(`/userdashboard/${localStorage.getItem("username")}`)
+      }
+      else{
+        this.router.navigateByUrl("/admindashboard/admin")
+      }
     }
     
   }
 
   submitForm(ref){
     let credObj = ref.value;
-    
+    localStorage.setItem("usertype",credObj.usertype)
     if(credObj.usertype == "user"){
       delete credObj.usertype
       

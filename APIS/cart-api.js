@@ -54,6 +54,7 @@ cartApiObj.post("/deleteproduct",validateToken,errorHandler(async(req,res)=>{
 cartApiObj.get("/getproducts/:username",validateToken,errorHandler(async(req,res)=>{
 
     let productsArrayfromCart = await Cart.find({username:req.params.username})
+    
     res.send({message:productsArrayfromCart})
 }))
 
