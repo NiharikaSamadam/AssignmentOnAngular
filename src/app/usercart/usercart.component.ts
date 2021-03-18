@@ -14,26 +14,7 @@ export class UsercartComponent implements OnInit {
  productsArray = [];
   ngOnInit(): void {
     this.username = localStorage.getItem("username")
-    // this.us.getProductsfromCart(this.username).subscribe(
-    //   res => {
-    //     if(res['message'] == "failed"){
-    //       alert(res['reason'])
-    //       localStorage.clear()
-    //       //navigate to login
-    //       this.router.navigateByUrl("/login")
-    //     }
-    //     else{
-    //       this.productsArray = res['message']
-    //     }
-       
-    //   },
-    //   err =>{
-    //     console.log(err)
-    //     alert("Something went wrong")
-        
-    //   }
-    //)
-
+    
     this.us.getCartItems(this.username).subscribe(
       res => {
             if(res['message'] == "failed"){
