@@ -22,7 +22,7 @@ export class UserprofileComponent implements OnInit {
 
         if(res['message'] == "failed"){
           alert(res['reason'])
-
+          localStorage.clear()
           //navigate to loin
           this.router.navigateByUrl("/login")
         }

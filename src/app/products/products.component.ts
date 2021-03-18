@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
   username:string;
   
   ngOnInit(): void {
-    this.username = localStorage.getItem("username")
+    
     this.us.getAllProducts().subscribe(
       res=>{
         this.productsArray = res['message']
@@ -34,11 +34,14 @@ export class ProductsComponent implements OnInit {
   }
 
   addtocart(product){
-    this.us.addProducttoCart(product).subscribe(
+    this.username = localStorage.getItem("username")
+    let productObj = {"username":this.username,"productId":product.productId,"pname":product.pname,"price":product.price,"brand":product.brand,"image":product.image}
+    this.us.addProducttoCart(productObj).subscribe(
          res=>{
            if(res["message"] == "failed"){
              alert(res["reason"])
              //navigate to login
+             localStorage.clear()
              this.router.navigateByUrl("/login")
            }
            else{
@@ -56,6 +59,5 @@ export class ProductsComponent implements OnInit {
          }
     )
   }
-  
 
 }

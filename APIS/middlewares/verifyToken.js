@@ -12,6 +12,7 @@ const validateToken = (req,res,next) =>{
     //if token doesn't exists 
     if(tokenWithBearer == undefined){
         res.send({message:"failed",reason:"Please login into your account...."})
+        
     }
 
     //if token exits
@@ -24,6 +25,7 @@ const validateToken = (req,res,next) =>{
         jwt.verify(token,process.env.SECRET,(err,decodedToken)=>{
            
             if(err){
+                
                 res.send({message:"failed",reason:"Session Expired...Login again.."})
             }
 

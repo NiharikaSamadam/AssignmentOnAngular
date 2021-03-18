@@ -3,6 +3,7 @@ const mongoose = require("mongoose")
 
 //create a schema
 const CartSchema = mongoose.Schema({
+    username : {type : String,required:true},
     productId : {type:Number,required:true},
     pname : {type:String,required:true},
     price :  {type:Number,required:true},

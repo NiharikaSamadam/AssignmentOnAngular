@@ -15,6 +15,9 @@ export class UserdashboardComponent implements OnInit {
   ngOnInit(): void {
  
     this.username = localStorage.getItem("username")
+    if(this.username == null){
+      this.router.navigateByUrl("/login")
+    }
 
   }
 

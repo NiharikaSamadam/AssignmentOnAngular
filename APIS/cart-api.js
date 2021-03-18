@@ -16,17 +16,18 @@ const validateToken = require("./middlewares/verifyToken")
 cartApiObj.post("/addtocart",validateToken,errorHandler(async(req,res)=>{
 
     //search for product in db with id
-    let cartObjFromDb = await Cart.findOne({productId:req.body.productId})
+    let cartObjFromDb = await Cart.findOne({$and:[{username:req.body.username},{productId:req.body.productId}]})
 
     //if product already exists in cart
     if(cartObjFromDb == null){
         let newCartObj = new Cart({
+            username : req.body.username,
             productId : req.body.productId,
             pname : req.body.pname,
             price : req.body.price,
             brand : req.body.brand,
             image : req.body.image
-        })
+    })
 
         await newCartObj.save()
         res.send({message:"product added to cart"})
@@ -38,25 +39,25 @@ cartApiObj.post("/addtocart",validateToken,errorHandler(async(req,res)=>{
     }
 }))
 
-//get products from cart
-//http://localhost:3000/cart/getproductsfromcart
-cartApiObj.get("/getproductsfromcart",validateToken,errorHandler(async(req,res)=>{
-
-    //get products from cart
-    let productsArray = await Cart.find()
-
-    res.send({message : productsArray})
-}))
-
 //delete product from cart
-//http://localhost:3000/cart/deleteproduct/<productId>
-cartApiObj.delete("/deleteproduct/:productId",validateToken,errorHandler(async(req,res)=>{
-
-    //delete product
-    let result = await Cart.deleteOne({productId : req.params.productId})
-    let updatedArray = await Cart.findOne({productId : req.params.productId})
-    res.send({message:"deleted successfully",updatedArray:updatedArray})
+//http://localhost:3000/cart/deleteproduct/<username>
+cartApiObj.post("/deleteproduct",validateToken,errorHandler(async(req,res)=>{
+ 
+    //delete product whose username is given in the path
+    let result = await Cart.deleteOne({$and:[{username:req.body.username},{productId:req.body.productId}]})
+    res.send({message:"deleted successfully"})
+  
 }))
+
+//get products from cart with username
+//http://localhost:3000/cart/getproducts/<username>
+cartApiObj.get("/getproducts/:username",validateToken,errorHandler(async(req,res)=>{
+
+    let productsArrayfromCart = await Cart.find({username:req.params.username})
+    res.send({message:productsArrayfromCart})
+}))
+
+
 
 //export
 module.exports = cartApiObj

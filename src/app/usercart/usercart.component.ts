@@ -14,48 +14,70 @@ export class UsercartComponent implements OnInit {
  productsArray = [];
   ngOnInit(): void {
     this.username = localStorage.getItem("username")
-    this.us.getProductsfromCart().subscribe(
-      res => {
-        if(res['message'] == "failed"){
-          alert(res['reason'])
-
-          //navigate to login
-          this.router.navigateByUrl("/login")
-        }
-        else{
-          this.productsArray = res['message']
-        }
+    // this.us.getProductsfromCart(this.username).subscribe(
+    //   res => {
+    //     if(res['message'] == "failed"){
+    //       alert(res['reason'])
+    //       localStorage.clear()
+    //       //navigate to login
+    //       this.router.navigateByUrl("/login")
+    //     }
+    //     else{
+    //       this.productsArray = res['message']
+    //     }
        
-      },
-      err =>{
-        console.log(err)
-        alert("Something went wrong")
+    //   },
+    //   err =>{
+    //     console.log(err)
+    //     alert("Something went wrong")
         
-      }
+    //   }
+    //)
+
+    this.us.getCartItems(this.username).subscribe(
+      res => {
+            if(res['message'] == "failed"){
+              alert(res['reason'])
+              localStorage.clear()
+              //navigate to login
+              this.router.navigateByUrl("/login")
+            }
+            else{
+              this.productsArray = res['message']
+            }
+           
+          },
+          err =>{
+            console.log(err)
+            alert("Something went wrong")
+            
+          }
     )
   }
 
-  deleteitem(id){
-    
-    this.us.deleteProductFromCart(id).subscribe(
-      res=>{
-        if(res['message'] == "failed"){
-          alert(res['reason'])
-          //navigate to login
-          this.router.navigateByUrl("/login")
+  deleteitem(product){
+    let id = product.productId
+    let cartObj = {"username":this.username,"productId":id}
+    this.us.deleteCartItem(cartObj).subscribe(
+      res=>{    
+          if(res['message'] == "failed"){
+            alert(res['reason'])
+            localStorage.clear()
+            //navigate to login
+            this.router.navigateByUrl("/login")
+          }
+          else{
+            alert(res['message'])
+            this.productsArray.splice(product,1)
+           
+          }
+        },
+        err=>{
+          alert("something went wrong")
+          console.log(err)
         }
-        else{
-          alert(res['message'])
-          //navigate to home
-          this.router.navigateByUrl(`/userdashboard/${this.username}`)
-        }
-      },
-      err=>{
-        alert("something went wrong")
-        console.log(err)
-      }
-    )
-  }
+    )}
+
   logout(){
     localStorage.clear()
     this.router.navigateByUrl("/login")

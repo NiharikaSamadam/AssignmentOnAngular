@@ -35,7 +35,7 @@ export class AddProductComponent implements OnInit {
       res=>{
         if(res['message'] == "failed"){
           alert(res['reason'])
-
+          localStorage.clear()
           //navigate to loin
           this.router.navigateByUrl("/login")
         }

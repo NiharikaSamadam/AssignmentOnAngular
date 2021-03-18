@@ -15,9 +15,10 @@ export class LoginComponent implements OnInit {
   @Input() user:string
 
   ngOnInit(): void {
+  
     if(localStorage.getItem("username") == null){
       this.router.navigateByUrl("/login")
-      localStorage.clear()
+      
     }
     else{
         
@@ -38,7 +39,7 @@ export class LoginComponent implements OnInit {
             this.username = res['username']
             localStorage.setItem("token",res['token'])
             localStorage.setItem("username",res['username'])
-            
+            sessionStorage.setItem("username",this.username)
             //navigate to user dashboard
             this.router.navigateByUrl(`/userdashboard/${this.username}`)
           }
