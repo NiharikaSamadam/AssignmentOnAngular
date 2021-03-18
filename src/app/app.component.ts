@@ -13,10 +13,12 @@ export class AppComponent implements OnInit{
   constructor(private router : Router){}
   ngOnInit(): void {
     this.username = localStorage.getItem("username")
+    console.log(this.username)
   }
 
   logout(){
     localStorage.clear()
     this.router.navigateByUrl("/login")
   }
+  
 }

@@ -10,8 +10,10 @@ import { UserserviceService } from '../userservice.service';
 export class ProductsComponent implements OnInit {
 
   constructor(private us:UserserviceService,private router : Router) { }
+ 
   productsArray = [];
   username:string;
+  
   ngOnInit(): void {
     this.username = localStorage.getItem("username")
     this.us.getAllProducts().subscribe(
@@ -54,5 +56,6 @@ export class ProductsComponent implements OnInit {
          }
     )
   }
+  
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserserviceService } from '../userservice.service';
 
@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
   constructor(private us:UserserviceService,private router:Router) { }
 
   username:string;
+  @Input() user:string
+
   ngOnInit(): void {
     if(localStorage.getItem("username") == null){
       this.router.navigateByUrl("/login")
@@ -36,7 +38,6 @@ export class LoginComponent implements OnInit {
             this.username = res['username']
             localStorage.setItem("token",res['token'])
             localStorage.setItem("username",res['username'])
-            sessionStorage.setItem("username",res['username'])
             
             //navigate to user dashboard
             this.router.navigateByUrl(`/userdashboard/${this.username}`)
